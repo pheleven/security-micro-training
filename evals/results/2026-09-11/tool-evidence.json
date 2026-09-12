@@ -1,0 +1,567 @@
+{
+  "interactive-cwe": {
+    "models": [
+      "gpt-6-astra"
+    ],
+    "source_operations": [
+      "text(await tools.exec_command({cmd:\"cat $CASE/security-micro-training/SKILL.md\",max_output_tokens:12000}));\ntext(await tools.web__run({open:[{ref_id:\"https://cwe.mitre.org/data/definitions/89.html\"},{ref_id:\"https://docs.python.org/3/library/sqlite3.html\"}],response_length:\"long\"}));\n",
+      "text(await tools.web__run({find:[{ref_id:\"https://docs.python.org/3/library/sqlite3.html\",pattern:\"Never do this\"}],open:[{ref_id:\"https://cwe.mitre.org/data/definitions/89.html\",lineno:30}],response_length:\"short\"}));\n"
+    ],
+    "explicit_source_urls": [
+      "https://cwe.mitre.org/data/definitions/89.html",
+      "https://docs.python.org/3/library/sqlite3.html"
+    ],
+    "completed_web_events": 2,
+    "completed_commands": [
+      {
+        "command": "/usr/bin/bash -lc 'cat $CASE/security-micro-training/SKILL.md'",
+        "exit_code": 0
+      }
+    ]
+  },
+  "interactive-mode-switch": {
+    "models": [
+      "gpt-6-astra"
+    ],
+    "source_operations": [
+      "text(await tools.exec_command({cmd:\"cat $CASE/security-micro-training/SKILL.md\",max_output_tokens:12000}));\ntext(await tools.web__run({open:[{ref_id:\"https://cwe.mitre.org/data/definitions/89.html\"},{ref_id:\"https://cheatsheetseries.owasp.org/cheatsheets/SQL_Injection_Prevention_Cheat_Sheet.html\"}],response_length:\"long\"}));\n",
+      "const results = await Promise.allSettled([\ntools.exec_command({cmd:\"sed -n '145,205p' $CASE/security-micro-training/SKILL.md\",max_output_tokens:2200}),\ntools.web__run({open:[{ref_id:\"https://cwe.mitre.org/data/definitions/89.html\",lineno:35},{ref_id:\"https://cheatsheetseries.owasp.org/cheatsheets/SQL_Injection_Prevention_Cheat_Sheet.html\",lineno:235}],response_length:\"short\"})\n]); for (const r of results) text(r);\n",
+      "text(await tools.web__run({search_query:[{q:'site.ibm.com \"SQL\" \"Structured Query Language\"'}],response_length:\"short\"}));\n"
+    ],
+    "explicit_source_urls": [
+      "https://cheatsheetseries.owasp.org/cheatsheets/SQL_Injection_Prevention_Cheat_Sheet.html",
+      "https://cwe.mitre.org/data/definitions/89.html"
+    ],
+    "completed_web_events": 3,
+    "completed_commands": [
+      {
+        "command": "/usr/bin/bash -lc 'cat $CASE/security-micro-training/SKILL.md'",
+        "exit_code": 0
+      },
+      {
+        "command": "/usr/bin/bash -lc \"sed -n '145,205p' $CASE/security-micro-training/SKILL.md\"",
+        "exit_code": 0
+      }
+    ]
+  },
+  "written-cwe": {
+    "models": [
+      "gpt-6-astra"
+    ],
+    "source_operations": [
+      "text(await tools.web__run({open:[{ref_id:\"https://cwe.mitre.org/data/definitions/89.html\"},{ref_id:\"https://docs.python.org/3/library/sqlite3.html\"},{ref_id:\"https://cheatsheetseries.owasp.org/cheatsheets/SQL_Injection_Prevention_Cheat_Sheet.html\"}],response_length:\"long\"}));\n",
+      "text(await tools.web__run({find:[{ref_id:\"turn0view1\",pattern:\"How to use placeholders\"},{ref_id:\"turn0view2\",pattern:\"table names\"}],response_length:\"short\"}));\n"
+    ],
+    "explicit_source_urls": [
+      "https://cheatsheetseries.owasp.org/cheatsheets/SQL_Injection_Prevention_Cheat_Sheet.html",
+      "https://cwe.mitre.org/data/definitions/89.html",
+      "https://docs.python.org/3/library/sqlite3.html"
+    ],
+    "completed_web_events": 2,
+    "completed_commands": [
+      {
+        "command": "/usr/bin/bash -lc 'cat $CASE/security-micro-training/SKILL.md'",
+        "exit_code": 0
+      },
+      {
+        "command": "/usr/bin/bash -lc \"python -B - <<'PY'\nimport sqlite3\ncon = sqlite3.connect(':memory:')\ncon.execute('CREATE TABLE contacts (name TEXT)')\ncon.executemany('INSERT INTO contacts VALUES (?)', [('Mina',), (\\\"O'Neil\\\",)])\nname = \\\"' OR '1'='1\\\"\nunsafe = con.execute(f\\\"SELECT name FROM contacts WHERE name = '{name}'\\\").fetchall()\ndef lookup(name):\n    return con.execute('SELECT name FROM contacts WHERE name = ?', (name,)).fetchall()\nassert len(unsafe) == 2\nassert lookup('Mina') == [('Mina',)]\nassert lookup(\\\"O'Neil\\\") == [(\\\"O'Neil\\\",)]\nassert lookup(name) == []\ncon.close()\nprint('Toy example verified: unsafe lookup returns both rows; all three fixed-lookup checks pass.')\nPY\"",
+        "exit_code": 0
+      }
+    ]
+  },
+  "cve-branches": {
+    "models": [
+      "gpt-6-astra"
+    ],
+    "source_operations": [
+      "const results = await Promise.allSettled([tools.exec_command({cmd:\"cat $CASE/security-micro-training/references/source-review.md\",\"max_output_tokens\":5000}),tools.web__run({open:[{ref_id:\"https://logging.apache.org/log4j/2.x/security.html\"},{ref_id:\"https://logging.apache.org/log4j/2.x/download.html\"}],response_length:\"long\"})]); for(let i=0;i<results.length;i++) text({i,result:results[i]});\n",
+      "text(await tools.web__run({find:[{ref_id:\"turn0view0\",pattern:\"CVE-2021-44228\"}],open:[{ref_id:\"https://logging.apache.org/log4j/2.x/security.html#CVE-2021-44228\"},{ref_id:\"turn0view1\",lineno:30},{ref_id:\"https://logging.apache.org/log4j/2.x/release-notes.html\"}],response_length:\"long\"}));\n",
+      "text(await tools.web__run({find:[{ref_id:\"turn1view2\",pattern:\"2.12.2 (\"},{ref_id:\"turn1view2\",pattern:\"2.3.1 (\"},{ref_id:\"turn1view2\",pattern:\"2.15.0 (\"},{ref_id:\"turn1view2\",pattern:\"2.17.1 (\"}],open:[{ref_id:\"https://logging.apache.org/log4j/2.x/release-notes.html#release-notes-2-26-1\"},{ref_id:\"https://logging.apache.org/log4j/2.x/manual/installation.html\"}],response_length:\"long\"}));\n",
+      "text(await tools.web__run({find:[{ref_id:\"turn2view1\",pattern:\"Java\"},{\"ref_id\":\"turn1view2\",\"pattern\":\"## 2.26.1\"},{\"ref_id\":\"turn1view2\",\"pattern\":\"## 2.12.2\"},{\"ref_id\":\"turn1view2\",\"pattern\":\"## 2.3.1\"}],response_length:\"long\"}));\n"
+    ],
+    "explicit_source_urls": [
+      "https://logging.apache.org/log4j/2.x/download.html",
+      "https://logging.apache.org/log4j/2.x/manual/installation.html",
+      "https://logging.apache.org/log4j/2.x/release-notes.html",
+      "https://logging.apache.org/log4j/2.x/release-notes.html#release-notes-2-26-1",
+      "https://logging.apache.org/log4j/2.x/security.html",
+      "https://logging.apache.org/log4j/2.x/security.html#CVE-2021-44228"
+    ],
+    "completed_web_events": 4,
+    "completed_commands": [
+      {
+        "command": "/usr/bin/bash -lc 'cat $CASE/security-micro-training/SKILL.md'",
+        "exit_code": 0
+      },
+      {
+        "command": "/usr/bin/bash -lc 'cat $CASE/security-micro-training/references/source-review.md'",
+        "exit_code": 0
+      }
+    ]
+  },
+  "ambiguous-owasp": {
+    "models": [
+      "gpt-6-astra"
+    ],
+    "source_operations": [
+      "text(await tools.web__run({open:[{ref_id:\"https://owasp.org/Top10/2025/A01_2025-Broken_Access_Control/\"},{ref_id:\"https://owasp.org/API-Security/editions/2023/en/0xa1-broken-object-level-authorization/\"}],response_length:\"short\"}));\n",
+      "text(await tools.web__run({open:[{ref_id:\"https://owasp.org/Top10/2021/A01_2021-Broken_Access_Control/\"}],response_length:\"long\"}));\n"
+    ],
+    "explicit_source_urls": [
+      "https://owasp.org/API-Security/editions/2023/en/0xa1-broken-object-level-authorization/",
+      "https://owasp.org/Top10/2021/A01_2021-Broken_Access_Control/",
+      "https://owasp.org/Top10/2025/A01_2025-Broken_Access_Control/"
+    ],
+    "completed_web_events": 2,
+    "completed_commands": [
+      {
+        "command": "/usr/bin/bash -lc 'cat $CASE/security-micro-training/SKILL.md'",
+        "exit_code": 0
+      }
+    ]
+  },
+  "attack-handout": {
+    "models": [
+      "gpt-6-astra"
+    ],
+    "source_operations": [
+      "text(await tools.exec_command({cmd:\"cat $CASE/security-micro-training/SKILL.md\",max_output_tokens:10000}));\ntext(await tools.web__run({open:[{ref_id:\"https://attack.mitre.org/techniques/T1059/001/\"},{ref_id:\"https://learn.microsoft.com/en-us/powershell/module/microsoft.powershell.core/about/about_logging_windows?view=powershell-7.5\"}],response_length:\"long\"}));\n",
+      "text(await tools.web__run({find:[{ref_id:\"https://attack.mitre.org/techniques/T1059/001/\",pattern:\"Mitigations\"},{ref_id:\"https://attack.mitre.org/techniques/T1059/001/\",pattern:\"Adversaries may\"},{ref_id:\"turn0view1\",pattern:\"4104\"}],response_length:\"short\"}));\n",
+      "text(await tools.web__run({open:[{ref_id:\"https://attack.mitre.org/detectionstrategies/DET0455/\"},{ref_id:\"https://learn.microsoft.com/en-us/powershell/module/microsoft.powershell.core/about/about_logging_windows?view=powershell-5.1\"}],response_length:\"long\"}));\n"
+    ],
+    "explicit_source_urls": [
+      "https://attack.mitre.org/detectionstrategies/DET0455/",
+      "https://attack.mitre.org/techniques/T1059/001/",
+      "https://learn.microsoft.com/en-us/powershell/module/microsoft.powershell.core/about/about_logging_windows?view=powershell-5.1",
+      "https://learn.microsoft.com/en-us/powershell/module/microsoft.powershell.core/about/about_logging_windows?view=powershell-7.5"
+    ],
+    "completed_web_events": 3,
+    "completed_commands": [
+      {
+        "command": "/usr/bin/bash -lc 'cat $CASE/security-micro-training/SKILL.md'",
+        "exit_code": 0
+      }
+    ]
+  },
+  "short-definition": {
+    "models": [
+      "gpt-6-astra"
+    ],
+    "source_operations": [
+      "text(await tools.web__run({open:[{ref_id:\"https://attack.mitre.org/resources/faq/\"}],response_length:\"short\"}));\n",
+      "text(await tools.web__run({search_query:[{q:'site.mitre.org ATT&CK \"Adversarial Tactics, Techniques\"'}],response_length:\"short\"}));\n"
+    ],
+    "explicit_source_urls": [
+      "https://attack.mitre.org/resources/faq/"
+    ],
+    "completed_web_events": 2,
+    "completed_commands": [
+      {
+        "command": "/usr/bin/bash -lc 'cat $CASE/security-micro-training/SKILL.md'",
+        "exit_code": 0
+      }
+    ]
+  },
+  "sources-unavailable": {
+    "models": [
+      "gpt-6-astra"
+    ],
+    "source_operations": [],
+    "explicit_source_urls": [],
+    "completed_web_events": 0,
+    "completed_commands": [
+      {
+        "command": "/usr/bin/bash -lc 'cat $CASE/security-micro-training/SKILL.md'",
+        "exit_code": 0
+      }
+    ]
+  },
+  "role-developer": {
+    "models": [
+      "gpt-6-astra"
+    ],
+    "source_operations": [
+      "text(await tools.exec_command({cmd:\"cat $CASE/security-micro-training/SKILL.md\",max_output_tokens:10000}));\ntext(await tools.web__run({open:[{ref_id:\"https://cwe.mitre.org/data/definitions/89.html\"},{ref_id:\"https://docs.python.org/3/library/sqlite3.html\"},{ref_id:\"https://cheatsheetseries.owasp.org/cheatsheets/SQL_Injection_Prevention_Cheat_Sheet.html\"}],response_length:\"long\"}));\n",
+      "text(await tools.web__run({find:[{ref_id:\"turn0view1\",pattern:\"How to use placeholders\"},{ref_id:\"turn0view2\",pattern:\"column names\"}],open:[{ref_id:\"turn0view0\",lineno:35}],response_length:\"short\"}));\ntext(await tools.exec_command({cmd:\"tail -n 22 $CASE/security-micro-training/SKILL.md\",max_output_tokens:2000}));\n",
+      "text(await tools.web__run({open:[{ref_id:\"turn0view0\",lineno:44},{ref_id:\"turn0view2\",lineno:245},{ref_id:\"turn0view1\",lineno:1250}],response_length:\"short\"}));\n"
+    ],
+    "explicit_source_urls": [
+      "https://cheatsheetseries.owasp.org/cheatsheets/SQL_Injection_Prevention_Cheat_Sheet.html",
+      "https://cwe.mitre.org/data/definitions/89.html",
+      "https://docs.python.org/3/library/sqlite3.html"
+    ],
+    "completed_web_events": 3,
+    "completed_commands": [
+      {
+        "command": "/usr/bin/bash -lc 'cat $CASE/security-micro-training/SKILL.md'",
+        "exit_code": 0
+      },
+      {
+        "command": "/usr/bin/bash -lc 'tail -n 22 $CASE/security-micro-training/SKILL.md'",
+        "exit_code": 0
+      }
+    ]
+  },
+  "role-soc": {
+    "models": [
+      "gpt-6-astra"
+    ],
+    "source_operations": [
+      "text(await tools.exec_command({cmd:\"cat $CASE/security-micro-training/SKILL.md\",max_output_tokens:11000}));\ntext(await tools.web__run({open:[{ref_id:\"https://cwe.mitre.org/data/definitions/89.html\"},{ref_id:\"https://cheatsheetseries.owasp.org/cheatsheets/SQL_Injection_Prevention_Cheat_Sheet.html\"},{ref_id:\"https://cheatsheetseries.owasp.org/cheatsheets/Logging_Cheat_Sheet.html\"}],response_length:\"long\"}));\n",
+      "text(await tools.web__run({open:[{ref_id:\"turn0view1\",lineno:225},{ref_id:\"turn0view2\",lineno:240},{ref_id:\"turn0view0\",lineno:30}],response_length:\"long\"}));\n",
+      "text(await tools.web__run({open:[{ref_id:\"turn0view2\",lineno:316}],response_length:\"short\"}));\n"
+    ],
+    "explicit_source_urls": [
+      "https://cheatsheetseries.owasp.org/cheatsheets/Logging_Cheat_Sheet.html",
+      "https://cheatsheetseries.owasp.org/cheatsheets/SQL_Injection_Prevention_Cheat_Sheet.html",
+      "https://cwe.mitre.org/data/definitions/89.html"
+    ],
+    "completed_web_events": 3,
+    "completed_commands": [
+      {
+        "command": "/usr/bin/bash -lc 'cat $CASE/security-micro-training/SKILL.md'",
+        "exit_code": 0
+      }
+    ]
+  },
+  "role-operator": {
+    "models": [
+      "gpt-6-astra"
+    ],
+    "source_operations": [
+      "text(await tools.exec_command({cmd:\"cat $CASE/security-micro-training/SKILL.md\",max_output_tokens:10000}));\ntext(await tools.web__run({open:[{ref_id:\"https://cwe.mitre.org/data/definitions/89.html\"},{ref_id:\"https://cheatsheetseries.owasp.org/cheatsheets/SQL_Injection_Prevention_Cheat_Sheet.html\"}],response_length:\"long\"}));\n",
+      "const results=await Promise.allSettled([\ntools.web__run({open:[{ref_id:\"https://cwe.mitre.org/data/definitions/89.html\",lineno:25},{ref_id:\"https://cheatsheetseries.owasp.org/cheatsheets/SQL_Injection_Prevention_Cheat_Sheet.html\",lineno:235}],response_length:\"long\"}),\ntools.exec_command({cmd:\"sed -n '160,220p' $CASE/security-micro-training/SKILL.md\",max_output_tokens:3000})\n]);for (let i=0;i<results.length;i++)text({i,result:results[i]});\n"
+    ],
+    "explicit_source_urls": [
+      "https://cheatsheetseries.owasp.org/cheatsheets/SQL_Injection_Prevention_Cheat_Sheet.html",
+      "https://cwe.mitre.org/data/definitions/89.html"
+    ],
+    "completed_web_events": 2,
+    "completed_commands": [
+      {
+        "command": "/usr/bin/bash -lc 'cat $CASE/security-micro-training/SKILL.md'",
+        "exit_code": 0
+      },
+      {
+        "command": "/usr/bin/bash -lc \"sed -n '160,220p' $CASE/security-micro-training/SKILL.md\"",
+        "exit_code": 0
+      }
+    ]
+  },
+  "role-employee": {
+    "models": [
+      "gpt-6-astra"
+    ],
+    "source_operations": [
+      "text(await tools.exec_command({cmd:\"cat $CASE/security-micro-training/SKILL.md\",max_output_tokens:12000}));\ntext(await tools.web__run({open:[{ref_id:\"https://cwe.mitre.org/data/definitions/89.html\"},{ref_id:\"https://cheatsheetseries.owasp.org/cheatsheets/SQL_Injection_Prevention_Cheat_Sheet.html\"}],response_length:\"long\"}));\n",
+      "text(await tools.web__run({open:[{ref_id:\"https://cwe.mitre.org/data/definitions/89.html\",lineno:35},{ref_id:\"https://cheatsheetseries.owasp.org/cheatsheets/SQL_Injection_Prevention_Cheat_Sheet.html\",lineno:225}],response_length:\"long\"}));\n"
+    ],
+    "explicit_source_urls": [
+      "https://cheatsheetseries.owasp.org/cheatsheets/SQL_Injection_Prevention_Cheat_Sheet.html",
+      "https://cwe.mitre.org/data/definitions/89.html"
+    ],
+    "completed_web_events": 2,
+    "completed_commands": [
+      {
+        "command": "/usr/bin/bash -lc 'cat $CASE/security-micro-training/SKILL.md'",
+        "exit_code": 0
+      }
+    ]
+  },
+  "role-correction": {
+    "models": [
+      "gpt-6-astra"
+    ],
+    "source_operations": [
+      "text(await tools.web__run({open:[{ref_id:\"https://cwe.mitre.org/data/definitions/89.html\"},{ref_id:\"https://docs.python.org/3/library/sqlite3.html\"}],response_length:\"long\"}));\n",
+      "text(await tools.web__run({find:[{ref_id:\"turn0view1\",pattern:\"SQL injection\"}],response_length:\"short\"}));\n"
+    ],
+    "explicit_source_urls": [
+      "https://cwe.mitre.org/data/definitions/89.html",
+      "https://docs.python.org/3/library/sqlite3.html"
+    ],
+    "completed_web_events": 2,
+    "completed_commands": [
+      {
+        "command": "/usr/bin/bash -lc 'cat $CASE/security-micro-training/SKILL.md'",
+        "exit_code": 0
+      }
+    ]
+  },
+  "source-claim-scope": {
+    "models": [
+      "gpt-6-astra"
+    ],
+    "source_operations": [
+      "text(await tools.exec_command({cmd:\"cat $CASE/security-micro-training/SKILL.md\",max_output_tokens:9000}));\ntext(await tools.web__run({open:[{ref_id:\"https://docs.python.org/3/library/sqlite3.html\"},{ref_id:\"https://www.sqlite.org/lang_expr.html\"},{ref_id:\"https://www.sqlite.org/lang_select.html\"}],response_length:\"long\"}));\n",
+      "const results = await Promise.allSettled([\ntools.exec_command({cmd:\"cat $CASE/security-micro-training/references/source-review.md\",max_output_tokens:4500}),\ntools.web__run({find:[{ref_id:\"https://docs.python.org/3/library/sqlite3.html\",pattern:\"How to use placeholders\"},{ref_id:\"https://www.sqlite.org/lang_expr.html\",pattern:\"Parameters\"}],open:[{ref_id:\"https://www.sqlite.org/c3ref/bind_blob.html\"},{ref_id:\"https://cheatsheetseries.owasp.org/cheatsheets/SQL_Injection_Prevention_Cheat_Sheet.html\"}],response_length:\"long\"})\n]); for (let i=0;i<results.length;i++) text({i,result:results[i]});\n",
+      "text(await tools.web__run({open:[{ref_id:\"https://www.sqlite.org/c3ref/bind_blob.html\",lineno:25}],find:[{ref_id:\"https://cheatsheetseries.owasp.org/cheatsheets/SQL_Injection_Prevention_Cheat_Sheet.html\",pattern:\"table names\"}],response_length:\"short\"}));\n"
+    ],
+    "explicit_source_urls": [
+      "https://cheatsheetseries.owasp.org/cheatsheets/SQL_Injection_Prevention_Cheat_Sheet.html",
+      "https://docs.python.org/3/library/sqlite3.html",
+      "https://www.sqlite.org/c3ref/bind_blob.html",
+      "https://www.sqlite.org/lang_expr.html",
+      "https://www.sqlite.org/lang_select.html"
+    ],
+    "completed_web_events": 3,
+    "completed_commands": [
+      {
+        "command": "/usr/bin/bash -lc 'cat $CASE/security-micro-training/SKILL.md'",
+        "exit_code": 0
+      },
+      {
+        "command": "/usr/bin/bash -lc 'cat $CASE/security-micro-training/references/source-review.md'",
+        "exit_code": 0
+      }
+    ]
+  },
+  "source-conflicting-guidance": {
+    "models": [
+      "gpt-6-astra"
+    ],
+    "source_operations": [
+      "text(await tools.exec_command({cmd:\"cat $CASE/security-micro-training/SKILL.md\",max_output_tokens:10000}));\ntext(await tools.web__run({open:[{ref_id:\"https://logging.apache.org/security.html\"},{ref_id:\"https://logging.apache.org/log4j/2.x/release-notes.html\"}],response_length:\"long\"}));\n",
+      "const results = await Promise.allSettled([\ntools.exec_command({cmd:\"cat $CASE/security-micro-training/references/source-review.md\",max_output_tokens:6000}),\ntools.web__run({find:[{ref_id:\"https://logging.apache.org/security.html\",pattern:\"CVE-2021-44832\"},{ref_id:\"https://logging.apache.org/log4j/2.x/release-notes.html\",pattern:\"CVE-2021-44832\"}],response_length:\"long\"})\n]);for (const r of results) text(r);\n"
+    ],
+    "explicit_source_urls": [
+      "https://logging.apache.org/log4j/2.x/release-notes.html",
+      "https://logging.apache.org/security.html"
+    ],
+    "completed_web_events": 2,
+    "completed_commands": [
+      {
+        "command": "/usr/bin/bash -lc 'cat $CASE/security-micro-training/SKILL.md'",
+        "exit_code": 0
+      },
+      {
+        "command": "/usr/bin/bash -lc 'cat $CASE/security-micro-training/references/source-review.md'",
+        "exit_code": 0
+      }
+    ]
+  },
+  "source-control-strength": {
+    "models": [
+      "gpt-6-astra"
+    ],
+    "source_operations": [
+      "text(await tools.exec_command({cmd:\"cat $CASE/security-micro-training/SKILL.md\",max_output_tokens:12500}));\ntext(await tools.web__run({open:[{ref_id:\"https://cwe.mitre.org/data/definitions/89.html\"},{ref_id:\"https://cheatsheetseries.owasp.org/cheatsheets/SQL_Injection_Prevention_Cheat_Sheet.html\"},{ref_id:\"https://owasp.org/www-community/controls/Virtual_Patching\"}],response_length:\"long\"}));\n",
+      "text(await tools.web__run({open:[{ref_id:\"https://cheatsheetseries.owasp.org/cheatsheets/SQL_Injection_Prevention_Cheat_Sheet.html\",lineno:235},{ref_id:\"https://cheatsheetseries.owasp.org/cheatsheets/Virtual_Patching_Cheat_Sheet.html\"},{ref_id:\"https://cwe.mitre.org/data/definitions/89.html\",lineno:30}],response_length:\"long\"}));\n",
+      "text(await tools.web__run({open:[{ref_id:\"https://cheatsheetseries.owasp.org/cheatsheets/Virtual_Patching_Cheat_Sheet.html\",lineno:205}],response_length:\"short\"}));\ntext(await tools.exec_command({cmd:\"sed -n '150,220p' $CASE/security-micro-training/SKILL.md\",max_output_tokens:3000}));\n"
+    ],
+    "explicit_source_urls": [
+      "https://cheatsheetseries.owasp.org/cheatsheets/SQL_Injection_Prevention_Cheat_Sheet.html",
+      "https://cheatsheetseries.owasp.org/cheatsheets/Virtual_Patching_Cheat_Sheet.html",
+      "https://cwe.mitre.org/data/definitions/89.html",
+      "https://owasp.org/www-community/controls/Virtual_Patching"
+    ],
+    "completed_web_events": 3,
+    "completed_commands": [
+      {
+        "command": "/usr/bin/bash -lc 'cat $CASE/security-micro-training/SKILL.md'",
+        "exit_code": 0
+      },
+      {
+        "command": "/usr/bin/bash -lc \"sed -n '150,220p' $CASE/security-micro-training/SKILL.md\"",
+        "exit_code": 0
+      }
+    ]
+  },
+  "connected-next": {
+    "models": [
+      "gpt-6-astra"
+    ],
+    "source_operations": [
+      "text(await tools.exec_command({cmd:\"cat $CASE/security-micro-training/SKILL.md\",max_output_tokens:10000}));\ntext(await tools.web__run({open:[{ref_id:\"https://cwe.mitre.org/data/definitions/88.html\"},{ref_id:\"https://cheatsheetseries.owasp.org/cheatsheets/OS_Command_Injection_Defense_Cheat_Sheet.html\"},{ref_id:\"https://cwe.mitre.org/data/definitions/78.html\"}],response_length:\"long\"}));\n",
+      "text(await tools.web__run({open:[{ref_id:\"turn0view0\",lineno:35},{ref_id:\"turn0view1\",lineno:235},{ref_id:\"turn0view2\",lineno:35}],response_length:\"long\"}));\n"
+    ],
+    "explicit_source_urls": [
+      "https://cheatsheetseries.owasp.org/cheatsheets/OS_Command_Injection_Defense_Cheat_Sheet.html",
+      "https://cwe.mitre.org/data/definitions/78.html",
+      "https://cwe.mitre.org/data/definitions/88.html"
+    ],
+    "completed_web_events": 2,
+    "completed_commands": [
+      {
+        "command": "/usr/bin/bash -lc 'cat $CASE/security-micro-training/SKILL.md'",
+        "exit_code": 0
+      }
+    ]
+  },
+  "review-transfer": {
+    "models": [
+      "gpt-6-astra"
+    ],
+    "source_operations": [
+      "text(await tools.web__run({open:[{ref_id:\"https://cwe.mitre.org/data/definitions/89.html\"},{ref_id:\"https://docs.python.org/3/library/sqlite3.html\"}],response_length:\"long\"}));\n",
+      "text(await tools.web__run({find:[{ref_id:\"turn0view1\",pattern:\"Never do this\"}],response_length:\"short\"}));\n",
+      "text(await tools.web__run({open:[{ref_id:\"https://docs.python.org/3/library/sqlite3.html#sqlite3-placeholders\"},{ref_id:\"https://cwe.mitre.org/data/definitions/89.html\"}],response_length:\"short\"}));\n"
+    ],
+    "explicit_source_urls": [
+      "https://cwe.mitre.org/data/definitions/89.html",
+      "https://docs.python.org/3/library/sqlite3.html",
+      "https://docs.python.org/3/library/sqlite3.html#sqlite3-placeholders"
+    ],
+    "completed_web_events": 3,
+    "completed_commands": [
+      {
+        "command": "/usr/bin/bash -lc 'cat $CASE/security-micro-training/SKILL.md'",
+        "exit_code": 0
+      }
+    ]
+  },
+  "review-missing-history": {
+    "models": [
+      "gpt-6-astra"
+    ],
+    "source_operations": [],
+    "explicit_source_urls": [],
+    "completed_web_events": 0,
+    "completed_commands": [
+      {
+        "command": "/usr/bin/bash -lc 'cat $CASE/security-micro-training/SKILL.md'",
+        "exit_code": 0
+      }
+    ]
+  },
+  "learning-path": {
+    "models": [
+      "gpt-6-astra"
+    ],
+    "source_operations": [
+      "text(await tools.web__run({open:[{ref_id:\"https://cwe.mitre.org/data/definitions/89.html\"},{ref_id:\"https://docs.python.org/3/library/sqlite3.html\"},{ref_id:\"https://cheatsheetseries.owasp.org/cheatsheets/SQL_Injection_Prevention_Cheat_Sheet.html\"}],response_length:\"long\"}));\n",
+      "text(await tools.web__run({find:[{ref_id:\"turn0view1\",pattern:\"How to use placeholders\"},{ref_id:\"turn0view2\",pattern:\"Allow-list Input Validation\"}],response_length:\"short\"}));\n"
+    ],
+    "explicit_source_urls": [
+      "https://cheatsheetseries.owasp.org/cheatsheets/SQL_Injection_Prevention_Cheat_Sheet.html",
+      "https://cwe.mitre.org/data/definitions/89.html",
+      "https://docs.python.org/3/library/sqlite3.html"
+    ],
+    "completed_web_events": 2,
+    "completed_commands": [
+      {
+        "command": "/usr/bin/bash -lc 'cat $CASE/security-micro-training/SKILL.md'",
+        "exit_code": 0
+      }
+    ]
+  },
+  "continue-unfinished": {
+    "models": [
+      "gpt-6-astra"
+    ],
+    "source_operations": [
+      "text(await tools.exec_command({cmd:\"cat $CASE/security-micro-training/SKILL.md\",max_output_tokens:11000}));\ntext(await tools.web__run({open:[{ref_id:\"https://cwe.mitre.org/data/definitions/88.html\"}],response_length:\"long\"}));\n",
+      "text(await tools.web__run({open:[{ref_id:\"https://cwe.mitre.org/data/definitions/88.html\",lineno:30}],response_length:\"short\"}));\n"
+    ],
+    "explicit_source_urls": [
+      "https://cwe.mitre.org/data/definitions/88.html"
+    ],
+    "completed_web_events": 2,
+    "completed_commands": [
+      {
+        "command": "/usr/bin/bash -lc 'cat $CASE/security-micro-training/SKILL.md'",
+        "exit_code": 0
+      }
+    ]
+  },
+  "hands-on-code": {
+    "models": [
+      "gpt-6-astra"
+    ],
+    "source_operations": [
+      "text(await tools.exec_command({cmd:\"cat $CASE/security-micro-training/SKILL.md\",max_output_tokens:11000}));\ntext(await tools.web__run({open:[{ref_id:\"https://cwe.mitre.org/data/definitions/89.html\"},{ref_id:\"https://docs.python.org/3/library/sqlite3.html\"}],response_length:\"long\"}));\n",
+      "const results = await Promise.allSettled([\ntools.exec_command({cmd:\"cat $CASE/security-micro-training/references/hands-on.md\",max_output_tokens:5000}),\ntools.web__run({find:[{ref_id:\"turn0view1\",pattern:\"Never do this\"},{ref_id:\"turn0view1\",pattern:\":memory:\"}],open:[{ref_id:\"https://cwe.mitre.org/data/definitions/89.html\",lineno:30}],response_length:\"short\"})\n]);for(let i=0;i<results.length;i++)text({i,result:results[i]});\n",
+      "text(await tools.web__run({open:[{ref_id:\"https://www.sqlite.org/lang_expr.html\"},{ref_id:\"https://docs.python.org/3/library/sqlite3.html#sqlite3-placeholders\"}],find:[{ref_id:\"https://www.sqlite.org/lang_expr.html\",pattern:\"C-style escapes\"},{ref_id:\"https://docs.python.org/3/library/sqlite3.html\",pattern:\"For the qmark style\"}],response_length:\"short\"}));\n"
+    ],
+    "explicit_source_urls": [
+      "https://cwe.mitre.org/data/definitions/89.html",
+      "https://docs.python.org/3/library/sqlite3.html",
+      "https://docs.python.org/3/library/sqlite3.html#sqlite3-placeholders",
+      "https://www.sqlite.org/lang_expr.html"
+    ],
+    "completed_web_events": 3,
+    "completed_commands": [
+      {
+        "command": "/usr/bin/bash -lc 'cat $CASE/security-micro-training/SKILL.md'",
+        "exit_code": 0
+      },
+      {
+        "command": "/usr/bin/bash -lc 'cat $CASE/security-micro-training/references/hands-on.md'",
+        "exit_code": 0
+      }
+    ]
+  },
+  "hands-on-soc": {
+    "models": [
+      "gpt-6-astra"
+    ],
+    "source_operations": [
+      "text(await tools.exec_command({cmd:\"cat $CASE/security-micro-training/SKILL.md\",max_output_tokens:12000}));\ntext(await tools.web__run({open:[{ref_id:\"https://cwe.mitre.org/data/definitions/89.html\"},{ref_id:\"https://cheatsheetseries.owasp.org/cheatsheets/SQL_Injection_Prevention_Cheat_Sheet.html\"},{ref_id:\"https://cheatsheetseries.owasp.org/cheatsheets/Logging_Cheat_Sheet.html\"}],response_length:\"long\"}));\n",
+      "const r = await Promise.allSettled([\ntools.exec_command({cmd:\"cat $CASE/security-micro-training/references/hands-on.md\",max_output_tokens:6000}),\ntools.web__run({open:[{ref_id:\"turn0view1\",lineno:230},{ref_id:\"turn0view2\",lineno:255},{ref_id:\"turn0view0\",lineno:35}],response_length:\"long\"})\n]); for (let i=0;i<r.length;i++) text({i,result:r[i]});\n"
+    ],
+    "explicit_source_urls": [
+      "https://cheatsheetseries.owasp.org/cheatsheets/Logging_Cheat_Sheet.html",
+      "https://cheatsheetseries.owasp.org/cheatsheets/SQL_Injection_Prevention_Cheat_Sheet.html",
+      "https://cwe.mitre.org/data/definitions/89.html"
+    ],
+    "completed_web_events": 2,
+    "completed_commands": [
+      {
+        "command": "/usr/bin/bash -lc 'cat $CASE/security-micro-training/SKILL.md'",
+        "exit_code": 0
+      },
+      {
+        "command": "/usr/bin/bash -lc 'cat $CASE/security-micro-training/references/hands-on.md'",
+        "exit_code": 0
+      }
+    ]
+  },
+  "hands-on-no-setup": {
+    "models": [
+      "gpt-6-astra"
+    ],
+    "source_operations": [
+      "const results = await Promise.allSettled([\ntools.exec_command({cmd:\"cat $CASE/security-micro-training/SKILL.md\",max_output_tokens:12000}),\ntools.web__run({open:[{ref_id:\"https://cwe.mitre.org/data/definitions/88.html\"},{ref_id:\"https://cheatsheetseries.owasp.org/cheatsheets/OS_Command_Injection_Defense_Cheat_Sheet.html\"}],response_length:\"long\"})\n]); for(let i=0;i<results.length;i++) text({i,result:results[i]});\n",
+      "const results = await Promise.allSettled([\ntools.exec_command({cmd:\"cat $CASE/security-micro-training/references/hands-on.md\",max_output_tokens:6000}),\ntools.web__run({open:[{ref_id:\"https://cwe.mitre.org/data/definitions/88.html\",lineno:35},{ref_id:\"https://cheatsheetseries.owasp.org/cheatsheets/OS_Command_Injection_Defense_Cheat_Sheet.html\",lineno:245}],response_length:\"long\"})\n]); for(let i=0;i<results.length;i++) text({i,result:results[i]});\n"
+    ],
+    "explicit_source_urls": [
+      "https://cheatsheetseries.owasp.org/cheatsheets/OS_Command_Injection_Defense_Cheat_Sheet.html",
+      "https://cwe.mitre.org/data/definitions/88.html"
+    ],
+    "completed_web_events": 2,
+    "completed_commands": [
+      {
+        "command": "/usr/bin/bash -lc 'cat $CASE/security-micro-training/SKILL.md'",
+        "exit_code": 0
+      },
+      {
+        "command": "/usr/bin/bash -lc 'cat $CASE/security-micro-training/references/hands-on.md'",
+        "exit_code": 0
+      }
+    ]
+  },
+  "hands-on-skip": {
+    "models": [
+      "gpt-6-astra"
+    ],
+    "source_operations": [
+      "const r = await Promise.allSettled([\ntools.exec_command({cmd:\"cat $CASE/security-micro-training/references/hands-on.md\",max_output_tokens:6000}),\ntools.web__run({open:[{ref_id:\"https://cwe.mitre.org/data/definitions/89.html\"},{ref_id:\"https://docs.python.org/3/library/sqlite3.html\"}],response_length:\"long\"})\n]); for(let i=0;i<r.length;i++)text({i,result:r[i]});\n",
+      "text(await tools.web__run({find:[{ref_id:\"turn0view1\",pattern:\"Never do this\"},{ref_id:\"turn0view1\",pattern:\"qmark\"}],response_length:\"short\"}));\n"
+    ],
+    "explicit_source_urls": [
+      "https://cwe.mitre.org/data/definitions/89.html",
+      "https://docs.python.org/3/library/sqlite3.html"
+    ],
+    "completed_web_events": 2,
+    "completed_commands": [
+      {
+        "command": "/usr/bin/bash -lc 'cat $CASE/security-micro-training/SKILL.md'",
+        "exit_code": 0
+      },
+      {
+        "command": "/usr/bin/bash -lc 'cat $CASE/security-micro-training/references/hands-on.md'",
+        "exit_code": 0
+      }
+    ]
+  }
+}

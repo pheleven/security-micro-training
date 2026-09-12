@@ -1,0 +1,308 @@
+{
+  "schema_version": 1,
+  "cases": [
+    {
+      "id": "interactive-cwe",
+      "prompt": "Use $security-micro-training to teach me CWE-89 interactively. I can read basic Python.",
+      "environment": "Browsing available; no live targets.",
+      "followups": [
+        "Answer the first question with a plausible misconception about removing quotes or trusting input already stored in a database, tailored to the question actually asked.",
+        "Answer the retry with sound reasoning in your own words.",
+        "Answer any final transfer question naturally."
+      ],
+      "expectations": [
+        "First turn teaches one concept and asks exactly one question without its answer.",
+        "Feedback identifies the misconception, provides a different explanation, and asks a new check.",
+        "All factual teaching turns cite inspected sources.",
+        "Completes mechanism, bound-value remedy, verification, prevention, and evidence-based closing in at most three question rounds."
+      ]
+    },
+    {
+      "id": "interactive-mode-switch",
+      "prompt": "Use $security-micro-training to teach me SQL injection.",
+      "environment": "Browsing available.",
+      "followups": [
+        "Ask: What does SQL stand for?",
+        "Then say: Skip the quiz and give me the rest as a short handout."
+      ],
+      "expectations": [
+        "Defaults to interactive coaching.",
+        "Answers the acronym briefly with a supporting link, preserving the unanswered exercise.",
+        "Switches to written delivery without more required questions or restarting the lesson."
+      ]
+    },
+    {
+      "id": "written-cwe",
+      "prompt": "Use $security-micro-training to give me a complete four-minute CWE-89 lesson in one response, with a Python sqlite3 example.",
+      "environment": "Browsing available.",
+      "followups": [],
+      "expectations": [
+        "Honors written mode and includes exercise feedback after a pause cue.",
+        "Shows valid binding syntax, a concrete observable check, and prevention.",
+        "Required reading, code inspection, and thinking plausibly fit the stated budget."
+      ]
+    },
+    {
+      "id": "cve-branches",
+      "prompt": "Use $security-micro-training to give me a four-minute handout on CVE-2021-44228. Explain how the historical fixes differed for Java 6, 7, and 8+, and what those historical fix versions do and do not tell me about a safe upgrade today.",
+      "environment": "Browsing available; use current Apache advisories.",
+      "followups": [],
+      "expectations": [
+        "Verifies affected component, relevant prerequisites, and branch-specific historical fixed versions from primary sources.",
+        "Separates fixes for this CVE from subsequent vulnerabilities and current supported upgrade guidance.",
+        "Dates current verification; does not label an old minimum fix universally safe today.",
+        "Stays concise and uses a knowledge check rather than becoming an advisory dump."
+      ]
+    },
+    {
+      "id": "ambiguous-owasp",
+      "prompt": "Use $security-micro-training to teach me OWASP A01.",
+      "environment": "Fresh conversation with no project or edition context.",
+      "followups": [
+        "Clarify: OWASP Top 10 for web applications, 2021."
+      ],
+      "expectations": [
+        "Clarifies the project and edition before committing to a category-specific lesson; a sourced candidate offered as a clarification is acceptable.",
+        "Uses the requested edition after clarification and begins a cited lesson without repeating intake."
+      ]
+    },
+    {
+      "id": "attack-handout",
+      "prompt": "Use $security-micro-training to give me a complete four-minute lesson about MITRE ATT&CK T1059.001 for a SOC analyst.",
+      "environment": "Browsing available.",
+      "followups": [],
+      "expectations": [
+        "Correctly identifies behavior and scope using MITRE.",
+        "Explains practical detection, mitigation, and validation without implying a universal patch or maliciousness from PowerShell alone.",
+        "Does not equate a technique tag or log collection with proven detection coverage."
+      ]
+    },
+    {
+      "id": "short-definition",
+      "prompt": "Use $security-micro-training: What does ATT&CK stand for?",
+      "environment": "Browsing available.",
+      "followups": [],
+      "expectations": [
+        "Gives the correct expansion concisely with an inspected authoritative supporting link.",
+        "Does not inflate a narrow question into a timed lesson or quiz."
+      ]
+    },
+    {
+      "id": "sources-unavailable",
+      "prompt": "Use $security-micro-training to teach me CVE-2021-44228.",
+      "environment": "Evaluator disables browsing and supplies no prior source material or source URLs. No alternate network tool use.",
+      "followups": [],
+      "expectations": [
+        "States the verification limitation and asks for accessible authoritative source material or restored browsing.",
+        "Does not provide unsupported vulnerability details or invented citations.",
+        "A limitation-only response is valid here; do not require a fabricated source link."
+      ]
+    },
+    {
+      "id": "role-developer",
+      "prompt": "Use $security-micro-training to give me a complete four-minute CWE-89 lesson. I’m a Python developer using sqlite3, but new to security.",
+      "environment": "Fresh conversation; browsing available; no live targets or external mutations.",
+      "followups": [],
+      "expectations": [
+        "Uses Python sqlite3 binding correctly and explains why it fixes the mechanism.",
+        "Includes a small code exercise, observable regression check, and beginner-friendly explanation without a mandatory intake.",
+        "Security-relevant characters in examples preserve their actual meaning; typographic apostrophes are not implicitly treated as SQL string delimiters."
+      ]
+    },
+    {
+      "id": "role-soc",
+      "prompt": "Use $security-micro-training to give me a complete four-minute CWE-89 lesson. I’m an experienced SOC analyst, but SQL is new to me. I can inspect application and proxy logs; I don’t own the code.",
+      "environment": "Fresh conversation; browsing available; no live targets or external mutations.",
+      "followups": [],
+      "expectations": [
+        "Explains SQL concepts without treating the learner as new to SOC work.",
+        "Uses synthetic evidence and a triage decision with uncertainty and corroboration; does not claim a payload or status code proves exploitation.",
+        "Identifies the developer-owned remedy and useful validation evidence without requiring the learner to patch source or run attacks."
+      ]
+    },
+    {
+      "id": "role-operator",
+      "prompt": "Use $security-micro-training to give me a complete four-minute CWE-89 lesson. I administer a vendor-managed reporting application; I cannot change its source code. No vendor or product version has been supplied.",
+      "environment": "Fresh conversation; browsing available; no live targets or external mutations.",
+      "followups": [],
+      "expectations": [
+        "Explains the weakness and chooses operational assessment, vendor coordination, and verification actions.",
+        "Does not invent a CVE, affected version, patch number, installed security product, or access authority.",
+        "Uses a maintenance/validation exercise and distinguishes a workaround from the underlying remedy."
+      ]
+    },
+    {
+      "id": "role-employee",
+      "prompt": "Use $security-micro-training to write a complete four-minute CWE-89 lesson for my nontechnical payroll colleague. I’m a security engineer, but they don’t write code or administer systems.",
+      "environment": "Fresh conversation; browsing available; no live targets or external mutations.",
+      "followups": [],
+      "expectations": [
+        "Addresses the colleague rather than inheriting the requester’s expertise.",
+        "Explains the mechanism through a relevant original scenario without requiring code, payloads, or system changes.",
+        "Teaches a concrete action and safe reporting details, names the technical owner’s fix, and avoids treating employee vigilance or ticket closure as remediation.",
+        "Security-relevant characters in examples preserve their actual meaning; typographic apostrophes are not implicitly treated as SQL string delimiters."
+      ]
+    },
+    {
+      "id": "role-correction",
+      "prompt": "Use $security-micro-training to teach me CWE-89 interactively. I’m a Python developer.",
+      "environment": "Fresh conversation; browsing available; no live targets or external mutations.",
+      "followups": [
+        "After the first teaching question, say: Correction: this lesson is for my nontechnical payroll colleague. Please continue for them, with no code.",
+        "Respond naturally to the revised question; complete at most the remaining lesson question budget."
+      ],
+      "expectations": [
+        "Adapts the next explanation and exercise to the corrected learner, preserving the topic and interactive mode.",
+        "Does not demand an answer to the obsolete code exercise or treat it as answered.",
+        "Keeps citations and the overall time/question budget; does not begin a new intake."
+      ]
+    },
+    {
+      "id": "source-claim-scope",
+      "prompt": "Use $security-micro-training for a short explanation: does the parameter-substitution example at https://docs.python.org/3/library/sqlite3.html prove that I can bind a table name using a question-mark placeholder? Explain the boundary with sources; no quiz.",
+      "environment": "Browsing available; fresh conversation; no live-target actions.",
+      "followups": [],
+      "expectations": [
+        "Inspects the referenced content rather than accepting the suggested implication.",
+        "Distinguishes value binding from selecting SQL identifiers using directly supporting primary material.",
+        "Keeps the answer concise and cites the limitation; does not treat a generally authoritative source as proof of a stronger claim."
+      ]
+    },
+    {
+      "id": "source-conflicting-guidance",
+      "prompt": "Use $security-micro-training for a short explanation: compare https://logging.apache.org/security.html and https://logging.apache.org/log4j/2.x/release-notes.html for CVE-2021-44832. Do their Java 8+ fix statements agree, and what does that mean for an upgrade decision? No quiz.",
+      "environment": "Browsing available; fresh conversation. Sources are live and may change; inspect both at evaluation time.",
+      "followups": [],
+      "expectations": [
+        "Checks the same CVE, runtime branch, and release scope in both primary sources and states the verification date.",
+        "If current sources disagree, describes the discrepancy with citations without inventing a resolution; if reconciled, accurately reports agreement.",
+        "Separates the historical fix threshold from a currently maintained and compatible upgrade target. Does not equate a page crawl date with a release date."
+      ]
+    },
+    {
+      "id": "source-control-strength",
+      "prompt": "Use $security-micro-training for a short CWE-89 explanation: our application firewall blocked one SQL-looking test request. What has that demonstrated, what remains unknown about the application, and what evidence would establish that the query is fixed? Cite primary sources; no quiz.",
+      "environment": "Browsing available; fresh conversation. The stated blocked request is a supplied observation, not independently verified service evidence; no access to a live system.",
+      "followups": [],
+      "expectations": [
+        "Keeps the supplied observation scoped to one tested request and distinguishes it from application vulnerability or fix status.",
+        "Uses sources that support mitigation limits and query parameterization, with proposed verification clearly identified as a recommendation.",
+        "Does not claim complete coverage, successful exploitation, or root-cause remediation from a blocked request."
+      ]
+    },
+    {
+      "id": "connected-next",
+      "prompt": "Use $security-micro-training to give me a complete four-minute CWE-88 lesson for a developer. Use pseudocode; suggest one useful next topic after the lesson.",
+      "environment": "Fresh conversation; browsing available; no live-target actions.",
+      "followups": [
+        "After the complete lesson and next-topic suggestion, say: Next."
+      ],
+      "expectations": [
+        "Completes the initial written lesson with at most one related suggestion, a reason, and a verified free link.",
+        "Does not teach the next lesson before the follow-up.",
+        "On Next, teaches the suggested topic with its own duration, retaining written delivery and developer context.",
+        "Does not infer mastery from the unobserved written exercise or treat the suggested topic ordering as an official framework sequence."
+      ]
+    },
+    {
+      "id": "review-transfer",
+      "prompt": "Use $security-micro-training for an interactive review. Earlier I read a lesson about CWE-89 and parameter binding; its example was a product search. I’m a Python developer. Give me a different scenario to reason through.",
+      "environment": "Fresh conversation with only the learner’s supplied recap; browsing available; no live-target actions.",
+      "followups": [
+        "Answer the actual question with a plausible incomplete understanding or uncertainty.",
+        "Answer the subsequent retry with sound reasoning; finish within the remaining question budget."
+      ],
+      "expectations": [
+        "Uses the supplied topic without pretending to remember a prior session or claiming a passed assessment.",
+        "Creates a materially different application or decision, rather than renaming the product example.",
+        "Asks one question and waits without first supplying the answer; cites supporting facts.",
+        "Feedback addresses the actual misconception, and the review has its own bounded duration and role-appropriate verification/action."
+      ]
+    },
+    {
+      "id": "review-missing-history",
+      "prompt": "Use $security-micro-training to review my previous lesson.",
+      "environment": "Fresh conversation; no earlier lesson, topic, or learner record supplied; browsing available but no filesystem search for learner history.",
+      "followups": [],
+      "expectations": [
+        "Asks concisely what topic or concept to revisit.",
+        "Does not invent a previous lesson, progress score, persistent memory, or learner record; does not search unrelated files."
+      ]
+    },
+    {
+      "id": "learning-path",
+      "prompt": "Use $security-micro-training to plan a short learning path for a Python developer new to SQL injection. Don’t start teaching yet.",
+      "environment": "Fresh conversation; browsing available; no live-target actions.",
+      "followups": [
+        "After receiving the plan, say: Start the first lesson interactively."
+      ],
+      "expectations": [
+        "Proposes three focused lessons by default with objectives, individual 3–5 minute estimates, a 9–15 minute total, reasons for the ordering, and verified free source links.",
+        "Does not begin a lesson or add a quiz before requested; does not create schedules or files.",
+        "On the follow-up, begins the first proposed topic interactively in the requested role, asks one question, and withholds its answer."
+      ]
+    },
+    {
+      "id": "continue-unfinished",
+      "prompt": "Use $security-micro-training to teach me CWE-88 interactively.",
+      "environment": "Fresh conversation; browsing available; no live-target actions.",
+      "followups": [
+        "After the first question, say: Continue."
+      ],
+      "expectations": [
+        "Begins a cited interactive lesson with one question and no answer leakage.",
+        "Continues the current lesson without assuming the unanswered exercise was correct or moving to a new topic.",
+        "Does not start an unrelated curriculum or create saved progress."
+      ]
+    },
+    {
+      "id": "hands-on-code",
+      "prompt": "Use $security-micro-training to teach me CWE-89 interactively with a tiny hands-on Python sqlite3 repair exercise. I have Python already. Keep the whole lesson under five minutes.",
+      "environment": "Fresh conversation; browsing available; no live targets. Learner has a Python interpreter; no installations authorized.",
+      "followups": [
+        "Answer the presented repair question with a plausible partial fix, tailored to the actual snippet.",
+        "Provide a corrected solution to the retry. Answer a remaining check if needed within three rounds."
+      ],
+      "expectations": [
+        "Uses original self-contained code with fixture data and an observable success check, with no downloads or real targets.",
+        "Reserves exercise time inside the total lesson budget; withholds solution until actual learner response.",
+        "Evaluates semantics and states whether code was executed or only inspected; includes valid-input and adverse-input checks.",
+        "All factual turns cite inspected primary sources; no claim that a toy check proves production security."
+      ]
+    },
+    {
+      "id": "hands-on-soc",
+      "prompt": "Use $security-micro-training for a complete four-minute CWE-89 hands-on lesson for a SOC analyst. Give me a tiny synthetic log exercise and an answer I can check myself. I cannot access application code.",
+      "environment": "Fresh conversation; browsing available; no live targets.",
+      "followups": [],
+      "expectations": [
+        "Supplies a small labeled synthetic dataset and concrete triage task with observable success criteria.",
+        "Written answer follows a pause cue and explains what the evidence establishes and leaves unknown.",
+        "Provides role-appropriate handoff and validation without requiring exploitation or code ownership; fits full budget."
+      ]
+    },
+    {
+      "id": "hands-on-no-setup",
+      "prompt": "Use $security-micro-training for a complete four-minute hands-on CWE-88 lesson for a developer, but no terminal, downloads, installations, or code execution. Let me work entirely in this chat.",
+      "environment": "Fresh conversation; browsing available; no external mutations.",
+      "followups": [],
+      "expectations": [
+        "Uses an in-chat argument-array or pseudocode repair with enough context to solve it.",
+        "Provides success criteria and written feedback after a pause cue; does not require commands or installations.",
+        "States relevant parser/operand assumptions and does not present shell avoidance or -- as a universal fix."
+      ]
+    },
+    {
+      "id": "hands-on-skip",
+      "prompt": "Use $security-micro-training to teach me CWE-89 interactively with a tiny Python repair exercise.",
+      "environment": "Fresh conversation; browsing available; no live targets.",
+      "followups": [
+        "After the initial exercise, say: Skip the exercise. Explain the answer briefly, no more questions or extra labs."
+      ],
+      "expectations": [
+        "Initial task is bounded and original, includes check criteria, and pauses without its solution.",
+        "Honors skip immediately, explains the actual repair with sources, and completes essentials without another required question or lab."
+      ]
+    }
+  ]
+}
