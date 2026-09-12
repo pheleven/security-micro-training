@@ -1,0 +1,609 @@
+{
+  "date": "2026-09-11",
+  "candidate_hashes": {
+    "SKILL.md": "7d34d90838300f0555f571d987570b3c694723cd203fe8aa760be26869e7eece",
+    "references/hands-on.md": "43e69641674800f3a8f851e06abe10b8d07fbb3f84544803a78a67425fb174ce",
+    "references/source-review.md": "500c0f13a2d75043f545f3c4e3ab0c9c1a8b6c705d337a34a04e9a85d8ade3b2"
+  },
+  "evaluator": "Root reviewer with fresh Codex CLI teaching sessions; simulated learner replies supplied by root",
+  "summary": {
+    "pass": 25,
+    "fail": 0,
+    "not_run": 0
+  },
+  "results": [
+    {
+      "case": "interactive-cwe",
+      "status": "pass",
+      "scores": {
+        "accuracy": 2,
+        "sources": 2,
+        "teaching": 2,
+        "interaction": 2,
+        "pacing": 2,
+        "scope": 2
+      },
+      "evidence": "Two actual learner answers. Corrects quote stripping with binding, changes to an author-lookup check, closes with exact-match regression checks and no mastery claim.",
+      "teacher_words_by_turn": [
+        157,
+        151,
+        121
+      ],
+      "teacher_words_total": 429,
+      "cited_sources": [
+        "https://cwe.mitre.org/data/definitions/89.html",
+        "https://docs.python.org/3/library/sqlite3.html#how-to-use-placeholders-to-bind-values-in-sql-queries"
+      ],
+      "transcript": "transcripts/interactive-cwe.md"
+    },
+    {
+      "case": "interactive-mode-switch",
+      "status": "pass",
+      "scores": {
+        "accuracy": 2,
+        "sources": 2,
+        "teaching": 2,
+        "interaction": 2,
+        "pacing": 2,
+        "scope": 2
+      },
+      "evidence": "SQL acronym detour is cited and retains the unanswered question. Subsequent skip request produces the remaining handout without more questions.",
+      "teacher_words_by_turn": [
+        149,
+        37,
+        269
+      ],
+      "teacher_words_total": 455,
+      "cited_sources": [
+        "https://cheatsheetseries.owasp.org/cheatsheets/SQL_Injection_Prevention_Cheat_Sheet.html",
+        "https://cheatsheetseries.owasp.org/cheatsheets/SQL_Injection_Prevention_Cheat_Sheet.html#defense-option-1-prepared-statements-with-parameterized-queries",
+        "https://cwe.mitre.org/data/definitions/89.html",
+        "https://cwe.mitre.org/data/definitions/89.html#Demonstrative_Examples",
+        "https://public.dhe.ibm.com/ps/products/db2/info/vr6/htm/db2y0/db2y006.htm"
+      ],
+      "transcript": "transcripts/interactive-mode-switch.md"
+    },
+    {
+      "case": "written-cwe",
+      "status": "pass",
+      "scores": {
+        "accuracy": 2,
+        "sources": 2,
+        "teaching": 2,
+        "interaction": 2,
+        "pacing": 2,
+        "scope": 2
+      },
+      "evidence": "Complete written lesson with original in-memory fixture, valid and adverse assertions, and an identifier-selection transfer exercise. Tool trace confirms four local assertions ran successfully.",
+      "teacher_words_by_turn": [
+        455
+      ],
+      "teacher_words_total": 455,
+      "cited_sources": [
+        "https://cheatsheetseries.owasp.org/cheatsheets/SQL_Injection_Prevention_Cheat_Sheet.html#defense-option-3-allow-list-input-validation",
+        "https://cwe.mitre.org/data/definitions/89.html",
+        "https://docs.python.org/3/library/sqlite3.html#how-to-use-placeholders-to-bind-values-in-sql-queries"
+      ],
+      "transcript": "transcripts/written-cwe.md"
+    },
+    {
+      "case": "cve-branches",
+      "status": "pass",
+      "scores": {
+        "accuracy": 2,
+        "sources": 2,
+        "teaching": 2,
+        "interaction": 2,
+        "pacing": 2,
+        "scope": 2
+      },
+      "evidence": "Historical branch-specific fixes match Apache; distinguishes current maintenance and deployed artifact verification; guidance dated September 11, 2026.",
+      "teacher_words_by_turn": [
+        449
+      ],
+      "teacher_words_total": 449,
+      "cited_sources": [
+        "https://logging.apache.org/log4j/2.x/download.html",
+        "https://logging.apache.org/log4j/2.x/manual/installation.html#requirements",
+        "https://logging.apache.org/log4j/2.x/release-notes.html#release-notes-2-15-0",
+        "https://logging.apache.org/security.html#CVE-2021-44228",
+        "https://logging.apache.org/security.html#CVE-2021-45046"
+      ],
+      "transcript": "transcripts/cve-branches.md"
+    },
+    {
+      "case": "ambiguous-owasp",
+      "status": "pass",
+      "scores": {
+        "accuracy": 2,
+        "sources": 2,
+        "teaching": null,
+        "interaction": 2,
+        "pacing": 2,
+        "scope": 2
+      },
+      "evidence": "Asks project/edition clarification, then begins the requested 2021 access-control lesson with one unanswered question. Test scope ends at that opening.",
+      "teacher_words_by_turn": [
+        18,
+        128
+      ],
+      "teacher_words_total": 146,
+      "cited_sources": [
+        "https://top10.owasp.org/2021/A01_2021-Broken_Access_Control/#description",
+        "https://top10.owasp.org/2025/A01_2025-Broken_Access_Control/"
+      ],
+      "transcript": "transcripts/ambiguous-owasp.md"
+    },
+    {
+      "case": "attack-handout",
+      "status": "pass",
+      "scores": {
+        "accuracy": 2,
+        "sources": 2,
+        "teaching": 2,
+        "interaction": 2,
+        "pacing": 2,
+        "scope": 2
+      },
+      "evidence": "SOC handout correlates a synthetic PowerShell process chain; distinguishes logging and detection evidence from prevention, and explains layered mitigation without a universal patch.",
+      "teacher_words_by_turn": [
+        499
+      ],
+      "teacher_words_total": 499,
+      "cited_sources": [
+        "https://attack.mitre.org/detectionstrategies/DET0455/",
+        "https://attack.mitre.org/techniques/T1059/001/",
+        "https://learn.microsoft.com/en-us/powershell/module/microsoft.powershell.core/about/about_logging_windows?view=powershell-7.5"
+      ],
+      "transcript": "transcripts/attack-handout.md"
+    },
+    {
+      "case": "short-definition",
+      "status": "pass",
+      "scores": {
+        "accuracy": 2,
+        "sources": 2,
+        "teaching": null,
+        "interaction": null,
+        "pacing": 2,
+        "scope": 2
+      },
+      "evidence": "Brief correct ATT&CK expansion with inspected MITRE CAPEC source and no unsolicited lesson.",
+      "teacher_words_by_turn": [
+        12
+      ],
+      "teacher_words_total": 12,
+      "cited_sources": [
+        "https://capec.mitre.org/about/attack_comparison.html"
+      ],
+      "transcript": "transcripts/short-definition.md"
+    },
+    {
+      "case": "sources-unavailable",
+      "status": "pass",
+      "scores": {
+        "accuracy": null,
+        "sources": null,
+        "teaching": null,
+        "interaction": 2,
+        "pacing": 2,
+        "scope": 2
+      },
+      "evidence": "States verification limitation and asks for source text and authentic URL. Browsing disabled; tool trace shows only reading the runtime skill and no alternate network access.",
+      "teacher_words_by_turn": [
+        71
+      ],
+      "teacher_words_total": 71,
+      "cited_sources": [],
+      "transcript": "transcripts/sources-unavailable.md"
+    },
+    {
+      "case": "role-developer",
+      "status": "pass",
+      "scores": {
+        "accuracy": 2,
+        "sources": 2,
+        "teaching": 2,
+        "interaction": 2,
+        "pacing": 2,
+        "scope": 2
+      },
+      "evidence": "Complete written Python lesson; exact bound-value syntax, valid and adverse regression inputs, two-value UPDATE exercise with worked answer.",
+      "teacher_words_by_turn": [
+        458
+      ],
+      "teacher_words_total": 458,
+      "cited_sources": [
+        "https://cheatsheetseries.owasp.org/cheatsheets/SQL_Injection_Prevention_Cheat_Sheet.html#defense-option-1-prepared-statements-with-parameterized-queries",
+        "https://cheatsheetseries.owasp.org/cheatsheets/SQL_Injection_Prevention_Cheat_Sheet.html#defense-option-3-allow-list-input-validation",
+        "https://cwe.mitre.org/data/definitions/89.html",
+        "https://docs.python.org/3/library/sqlite3.html#how-to-use-placeholders-to-bind-values-in-sql-queries"
+      ],
+      "transcript": "transcripts/role-developer.md"
+    },
+    {
+      "case": "role-soc",
+      "status": "pass",
+      "scores": {
+        "accuracy": 2,
+        "sources": 2,
+        "teaching": 2,
+        "interaction": 2,
+        "pacing": 2,
+        "scope": 2
+      },
+      "evidence": "Explains SQL for an experienced analyst; synthetic 500/200 events support suspicion rather than proven impact; owner handoff and query-fix evidence are concrete.",
+      "teacher_words_by_turn": [
+        497
+      ],
+      "teacher_words_total": 497,
+      "cited_sources": [
+        "https://cheatsheetseries.owasp.org/cheatsheets/Logging_Cheat_Sheet.html",
+        "https://cheatsheetseries.owasp.org/cheatsheets/Logging_Cheat_Sheet.html#event-attributes",
+        "https://cheatsheetseries.owasp.org/cheatsheets/Logging_Cheat_Sheet.html#verification",
+        "https://cheatsheetseries.owasp.org/cheatsheets/SQL_Injection_Prevention_Cheat_Sheet.html#defense-option-1-prepared-statements-with-parameterized-queries",
+        "https://cwe.mitre.org/data/definitions/89.html"
+      ],
+      "transcript": "transcripts/role-soc.md"
+    },
+    {
+      "case": "role-operator",
+      "status": "pass",
+      "scores": {
+        "accuracy": 2,
+        "sources": 2,
+        "teaching": 2,
+        "interaction": 2,
+        "pacing": 2,
+        "scope": 2
+      },
+      "evidence": "Vendor-managed deployment workflow without invented product/version/patch. Separates WAF/read-only mitigations from corrected query construction and deployed validation.",
+      "teacher_words_by_turn": [
+        489
+      ],
+      "teacher_words_total": 489,
+      "cited_sources": [
+        "https://cheatsheetseries.owasp.org/cheatsheets/SQL_Injection_Prevention_Cheat_Sheet.html#defense-option-1-prepared-statements-with-parameterized-queries",
+        "https://cheatsheetseries.owasp.org/cheatsheets/SQL_Injection_Prevention_Cheat_Sheet.html#least-privilege",
+        "https://cwe.mitre.org/data/definitions/89.html"
+      ],
+      "transcript": "transcripts/role-operator.md"
+    },
+    {
+      "case": "role-employee",
+      "status": "pass",
+      "scores": {
+        "accuracy": 2,
+        "sources": 2,
+        "teaching": 2,
+        "interaction": 2,
+        "pacing": 2,
+        "scope": 2
+      },
+      "evidence": "Payroll scenario uses the literal apostrophe correctly, gives an approved reporting action and technical-owner remedy, avoids requiring employee code or payload testing.",
+      "teacher_words_by_turn": [
+        495
+      ],
+      "teacher_words_total": 495,
+      "cited_sources": [
+        "https://cheatsheetseries.owasp.org/cheatsheets/SQL_Injection_Prevention_Cheat_Sheet.html#defense-option-1-prepared-statements-with-parameterized-queries",
+        "https://cwe.mitre.org/data/definitions/89.html"
+      ],
+      "transcript": "transcripts/role-employee.md"
+    },
+    {
+      "case": "role-correction",
+      "status": "pass",
+      "scores": {
+        "accuracy": 2,
+        "sources": 2,
+        "teaching": 2,
+        "interaction": 2,
+        "pacing": 2,
+        "scope": 2
+      },
+      "evidence": "Adapts to the payroll colleague without demanding the abandoned code answer. Actual learner responses cover safe reporting and rejection of name changes as a fix. Three questions including the abandoned question; sourced closing.",
+      "teacher_words_by_turn": [
+        135,
+        133,
+        153,
+        91
+      ],
+      "teacher_words_total": 512,
+      "cited_sources": [
+        "https://cwe.mitre.org/data/definitions/89.html",
+        "https://docs.python.org/3/library/sqlite3.html#how-to-use-placeholders-to-bind-values-in-sql-queries"
+      ],
+      "transcript": "transcripts/role-correction.md"
+    },
+    {
+      "case": "source-claim-scope",
+      "status": "pass",
+      "scores": {
+        "accuracy": 2,
+        "sources": 2,
+        "teaching": null,
+        "interaction": null,
+        "pacing": 2,
+        "scope": 2
+      },
+      "evidence": "Inspects Python, SQLite expression/binding references, and OWASP. Distinguishes bound values from table identifiers and proposes fixed mappings rather than claiming the example proves identifier binding.",
+      "teacher_words_by_turn": [
+        178
+      ],
+      "teacher_words_total": 178,
+      "cited_sources": [
+        "https://cheatsheetseries.owasp.org/cheatsheets/SQL_Injection_Prevention_Cheat_Sheet.html#sample-of-safe-table-name-validation",
+        "https://docs.python.org/3/library/sqlite3.html#how-to-use-placeholders-to-bind-values-in-sql-queries",
+        "https://www.sqlite.org/c3ref/bind_blob.html",
+        "https://www.sqlite.org/lang_expr.html#parameters"
+      ],
+      "transcript": "transcripts/source-claim-scope.md"
+    },
+    {
+      "case": "source-conflicting-guidance",
+      "status": "pass",
+      "scores": {
+        "accuracy": 2,
+        "sources": 2,
+        "teaching": null,
+        "interaction": null,
+        "pacing": 2,
+        "scope": 2
+      },
+      "evidence": "Inspects both Apache pages, dates the comparison, reports 2.17.0 versus 2.17.1 discrepancy without inventing a resolution or a universally safe historical upgrade.",
+      "teacher_words_by_turn": [
+        197
+      ],
+      "teacher_words_total": 197,
+      "cited_sources": [
+        "https://logging.apache.org/log4j/2.x/release-notes.html",
+        "https://logging.apache.org/security.html#CVE-2021-44832"
+      ],
+      "transcript": "transcripts/source-conflicting-guidance.md"
+    },
+    {
+      "case": "source-control-strength",
+      "status": "pass",
+      "scores": {
+        "accuracy": 2,
+        "sources": 2,
+        "teaching": null,
+        "interaction": null,
+        "pacing": 2,
+        "scope": 2
+      },
+      "evidence": "Scopes the supplied block to that request, explains virtual-patching limits, and proposes code review, application-level regression, and deployed-revision evidence.",
+      "teacher_words_by_turn": [
+        339
+      ],
+      "teacher_words_total": 339,
+      "cited_sources": [
+        "https://cheatsheetseries.owasp.org/cheatsheets/SQL_Injection_Prevention_Cheat_Sheet.html",
+        "https://cheatsheetseries.owasp.org/cheatsheets/Virtual_Patching_Cheat_Sheet.html#definition-virtual-patching",
+        "https://cwe.mitre.org/data/definitions/89.html"
+      ],
+      "transcript": "transcripts/source-control-strength.md"
+    },
+    {
+      "case": "connected-next",
+      "status": "pass",
+      "scores": {
+        "accuracy": 2,
+        "sources": 2,
+        "teaching": 2,
+        "interaction": 2,
+        "pacing": 2,
+        "scope": 2
+      },
+      "evidence": "First complete written CWE-88 lesson suggests only CWE-78 with a reason and free source; actual Next reply starts a separate four-minute written pseudocode lesson. No mastery inferred.",
+      "teacher_words_by_turn": [
+        471,
+        456
+      ],
+      "teacher_words_total": 927,
+      "cited_sources": [
+        "https://cheatsheetseries.owasp.org/cheatsheets/OS_Command_Injection_Defense_Cheat_Sheet.html#argument-injection",
+        "https://cheatsheetseries.owasp.org/cheatsheets/OS_Command_Injection_Defense_Cheat_Sheet.html#defense-option-1-avoid-calling-os-commands-directly",
+        "https://cheatsheetseries.owasp.org/cheatsheets/OS_Command_Injection_Defense_Cheat_Sheet.html#defense-option-3-parameterization-in-conjunction-with-input-validation",
+        "https://cheatsheetseries.owasp.org/cheatsheets/OS_Command_Injection_Defense_Cheat_Sheet.html#java",
+        "https://cheatsheetseries.owasp.org/cheatsheets/OS_Command_Injection_Defense_Cheat_Sheet.html#primary-defenses",
+        "https://cwe.mitre.org/data/definitions/78.html",
+        "https://cwe.mitre.org/data/definitions/88.html",
+        "https://cwe.mitre.org/data/definitions/88.html#Demonstrative_Examples"
+      ],
+      "transcript": "transcripts/connected-next.md"
+    },
+    {
+      "case": "review-transfer",
+      "status": "pass",
+      "scores": {
+        "accuracy": 2,
+        "sources": 2,
+        "teaching": 2,
+        "interaction": 2,
+        "pacing": 2,
+        "scope": 2
+      },
+      "evidence": "Uses a stored-email background job rather than product search; corrects the supplied trust misconception, then checks exact invoice note preservation and an untouched second row. Two learner answers, no false memory or execution claim.",
+      "teacher_words_by_turn": [
+        151,
+        194,
+        99
+      ],
+      "teacher_words_total": 444,
+      "cited_sources": [
+        "https://cwe.mitre.org/data/definitions/89.html",
+        "https://docs.python.org/3/library/sqlite3.html#sqlite3-placeholders",
+        "https://docs.python.org/3/library/sqlite3.html#tutorial"
+      ],
+      "transcript": "transcripts/review-transfer.md"
+    },
+    {
+      "case": "review-missing-history",
+      "status": "pass",
+      "scores": {
+        "accuracy": null,
+        "sources": null,
+        "teaching": null,
+        "interaction": 2,
+        "pacing": 2,
+        "scope": 2
+      },
+      "evidence": "Asks for the prior topic or recap without searching learner history or inventing memory. Scoped clarification test.",
+      "teacher_words_by_turn": [
+        27
+      ],
+      "teacher_words_total": 27,
+      "cited_sources": [],
+      "transcript": "transcripts/review-missing-history.md"
+    },
+    {
+      "case": "learning-path",
+      "status": "pass",
+      "scores": {
+        "accuracy": 2,
+        "sources": 2,
+        "teaching": null,
+        "interaction": 2,
+        "pacing": 2,
+        "scope": 2
+      },
+      "evidence": "Three sourced 3–5 minute lessons with 9–15 minute total; no lesson starts until the actual follow-up. Then starts the first topic interactively for the Python developer without its answer.",
+      "teacher_words_by_turn": [
+        169,
+        136
+      ],
+      "teacher_words_total": 305,
+      "cited_sources": [
+        "https://cheatsheetseries.owasp.org/cheatsheets/SQL_Injection_Prevention_Cheat_Sheet.html#defense-option-3-allow-list-input-validation",
+        "https://cwe.mitre.org/data/definitions/89.html",
+        "https://docs.python.org/3/library/sqlite3.html#how-to-use-placeholders-to-bind-values-in-sql-queries"
+      ],
+      "transcript": "transcripts/learning-path.md"
+    },
+    {
+      "case": "continue-unfinished",
+      "status": "pass",
+      "scores": {
+        "accuracy": 2,
+        "sources": 2,
+        "teaching": null,
+        "interaction": 2,
+        "pacing": 2,
+        "scope": 2
+      },
+      "evidence": "Continue preserves the pending CWE-88 example, supplies a hint, and rephrases the current question. No passed assessment or next-topic advancement is invented.",
+      "teacher_words_by_turn": [
+        125,
+        63
+      ],
+      "teacher_words_total": 188,
+      "cited_sources": [
+        "https://cwe.mitre.org/data/definitions/88.html"
+      ],
+      "transcript": "transcripts/continue-unfinished.md"
+    },
+    {
+      "case": "hands-on-code",
+      "status": "pass",
+      "scores": {
+        "accuracy": 2,
+        "sources": 2,
+        "teaching": 2,
+        "interaction": 2,
+        "pacing": 2,
+        "scope": 2
+      },
+      "evidence": "Original in-memory fixture has ordinary, SQL-looking, and apostrophe criteria; corrects backslash escaping using SQLite syntax, checks insertion transfer, and explicitly distinguishes reviewed from executed code.",
+      "teacher_words_by_turn": [
+        227,
+        144,
+        87
+      ],
+      "teacher_words_total": 458,
+      "cited_sources": [
+        "https://cwe.mitre.org/data/definitions/89.html",
+        "https://docs.python.org/3/library/sqlite3.html#sqlite3-placeholders",
+        "https://docs.python.org/3/library/sqlite3.html#sqlite3.connect",
+        "https://www.sqlite.org/lang_expr.html#literal_values_constants_"
+      ],
+      "transcript": "transcripts/hands-on-code.md"
+    },
+    {
+      "case": "hands-on-soc",
+      "status": "pass",
+      "scores": {
+        "accuracy": 2,
+        "sources": 2,
+        "teaching": 2,
+        "interaction": 2,
+        "pacing": 2,
+        "scope": 2
+      },
+      "evidence": "Complete written analyst exercise supplies four synthetic events and evidence-based success criteria. Worked answer separates suspicion from confirmed impact and includes a gateway-block transfer check.",
+      "teacher_words_by_turn": [
+        521
+      ],
+      "teacher_words_total": 521,
+      "cited_sources": [
+        "https://cheatsheetseries.owasp.org/cheatsheets/Logging_Cheat_Sheet.html#event-attributes",
+        "https://cheatsheetseries.owasp.org/cheatsheets/SQL_Injection_Prevention_Cheat_Sheet.html#defense-option-1-prepared-statements-with-parameterized-queries",
+        "https://cwe.mitre.org/data/definitions/89.html"
+      ],
+      "transcript": "transcripts/hands-on-soc.md"
+    },
+    {
+      "case": "hands-on-no-setup",
+      "status": "pass",
+      "scores": {
+        "accuracy": 2,
+        "sources": 2,
+        "teaching": 2,
+        "interaction": 2,
+        "pacing": 2,
+        "scope": 2
+      },
+      "evidence": "Complete in-chat pseudocode repair with an explicit fictional parser contract, three permitted filenames, outcome table and unsupported-terminator transfer check; no code execution or setup required.",
+      "teacher_words_by_turn": [
+        472
+      ],
+      "teacher_words_total": 472,
+      "cited_sources": [
+        "https://cheatsheetseries.owasp.org/cheatsheets/OS_Command_Injection_Defense_Cheat_Sheet.html#primary-defenses",
+        "https://cwe.mitre.org/data/definitions/88.html"
+      ],
+      "transcript": "transcripts/hands-on-no-setup.md"
+    },
+    {
+      "case": "hands-on-skip",
+      "status": "pass",
+      "scores": {
+        "accuracy": 2,
+        "sources": 2,
+        "teaching": 2,
+        "interaction": 2,
+        "pacing": 2,
+        "scope": 2
+      },
+      "evidence": "Initial repair task states three exact result criteria and pauses. Actual skip reply receives a compact worked repair and expected results, with no extra question or lab and no credit for an unattempted repair.",
+      "teacher_words_by_turn": [
+        197,
+        141
+      ],
+      "teacher_words_total": 338,
+      "cited_sources": [
+        "https://cwe.mitre.org/data/definitions/89.html",
+        "https://docs.python.org/3/library/sqlite3.html#how-to-use-placeholders-to-bind-values-in-sql-queries"
+      ],
+      "transcript": "transcripts/hands-on-skip.md"
+    }
+  ],
+  "limitations": [
+    "One final run per case; simulated learners, not a human retention study.",
+    "Timing is estimated from complete teaching text plus code inspection and thinking, excluding tools and interruptions.",
+    "Scoped clarification/path/continue cases intentionally stop at the specified question.",
+    "CLI JSONL and original session evidence are retained locally; the repository exports source operations and command outcomes without copying source-page bodies.",
+    "Usage-limit interruptions were resumed after reset. Prior delivery-mode failures are retained separately."
+  ]
+}

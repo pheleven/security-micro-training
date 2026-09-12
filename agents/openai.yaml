@@ -1,0 +1,4 @@
+interface:
+  display_name: "Security Micro Training"
+  short_description: "Free 3–5 minute lessons on security weaknesses"
+  default_prompt: "Use $security-micro-training to teach me CWE-89 in a free, practical 4-minute lesson with a fix, prevention habit, and quick knowledge check."
